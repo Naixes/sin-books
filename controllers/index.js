@@ -9,7 +9,7 @@ const apiController = new ApiController()
 function initController(app) {
     // 会自动将ctx，next传过去
     router.get('/', indexController.actionIndex)
-    router.get('/api/getDataList', apiController.actionDataList)
+    router.get('/api/getBooksList', apiController.actionBooksList)
 
     app
         .use(router.routes())
