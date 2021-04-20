@@ -1,14 +1,21 @@
 import Router from '@koa/router'
 import IndexController from './IndexController'
 import ApiController from './ApiController'
+import BooksController from './BooksController'
 
 const router = new Router()
 const indexController = new IndexController()
+const booksController = new BooksController()
+
 const apiController = new ApiController()
 
 function initController(app) {
+    // 页面路由
     // 会自动将ctx，next传过去
     router.get('/', indexController.actionIndex)
+    router.get('/books/list', booksController.actionBooksListPage)
+
+    // api路由
     router.get('/api/getBooksList', apiController.actionBooksList)
 
     app

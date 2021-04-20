@@ -34,7 +34,7 @@ logger.debug("Some debug messages");
 // 若匹配不到路由重定向到index
 app.use(historyApiFallback({
     index: '/',
-    whiteList: ['/api']
+    whiteList: ['/api', '/books']
 }))
 
 ErrorHandler.error(app, logger)
@@ -53,10 +53,6 @@ app.context.render = co.wrap(render({
 }))
 
 initController(app)
-
-app.use(ctx => {
-    ctx.body = 'hello koa'
-})
 
 app.listen(config.port, () => {
     console.log('server is running at port ' + config.port);

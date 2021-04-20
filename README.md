@@ -9,8 +9,8 @@ koa
 路由@koa/router
 
 - 初始化
-- api
-- 渲染页面，koa-swig+co
+- api路由
+- 渲染页面路由，koa-swig+co
 
 静态资源：koa-static
 
@@ -29,3 +29,7 @@ koa
 ES6模块化语法修改，@babel/node+@babel/preset-env，开发环境代码运行之前进行转码或者后缀使用mj，snode12后支持或者package.json添加`"type": "module"`
 
 model层
+
+axios封装，容错
+
+封装函数式库

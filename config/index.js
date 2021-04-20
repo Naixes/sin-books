@@ -9,7 +9,8 @@ let config = {
 if(process.env.NODE_ENV == 'development') {
     const devConfig = {
         port: 3000,
-        cache: false
+        cache: false,
+        baseUrl: 'http://localhost'
     }
 
     config = {
@@ -21,7 +22,8 @@ if(process.env.NODE_ENV == 'development') {
 if(process.env.NODE_ENV == 'production') {
     const proConfig = {
         port: 80,
-        cache: 'memory'
+        cache: 'memory',
+        baseUrl: 'http://localhost'
     }
 
     config = {

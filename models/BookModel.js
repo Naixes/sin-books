@@ -1,8 +1,9 @@
 import axios from 'axios'
+import SafeRequest from '../utils/safeRequest'
 
 class BooksModel {
     getBooksList() {
-        return axios.get('http://localhost/basic/web/index.php?r=books')
+        return SafeRequest.fetch('/basic/web/index.php?r=books')
     }
     findBook() {
     }
