@@ -1,14 +1,34 @@
-const Koa = require('koa')
-const render = require('koa-swig')
-const co = require('co')
-const static = require('koa-static')
-const {historyApiFallback} = require('koa2-connect-history-api-fallback')
+import Koa from 'koa'
+import render from 'koa-swig'
+import co from 'co'
+import staticServer from 'koa-static'
+import {historyApiFallback} from 'koa2-connect-history-api-fallback'
+import log4js from "log4js"
 
-const config = require('./config')
-const initController = require('./controllers')
-const ErrorHandler = require('./midlleware/ErrorHandle')
+import config from './config'
+import initController from './controllers'
+import ErrorHandler from './midlleware/ErrorHandle'
 
 const app = new Koa()
+
+// 日志处理
+log4js.configure({
+    appenders: { 
+        globalError: { 
+            type: "file", 
+            filename: "./logs/error.log" 
+        } 
+    },
+    categories: { 
+        default: { 
+            appenders: ["globalError"],
+            // 日志级别：ALL，TRACE，DEBUG，INFO，WARN，ERROR，FATAL，MARK，OFF 
+            level: "error" 
+        } 
+    }
+});
+const logger = log4js.getLogger('globalError');
+logger.debug("Some debug messages");
 
 // 真假路由问题
 // 若匹配不到路由重定向到index
@@ -17,10 +37,10 @@ app.use(historyApiFallback({
     whiteList: ['/api']
 }))
 
-ErrorHandler.error(app)
+ErrorHandler.error(app, logger)
 
 // 静态资源
-app.use(static(config.staticDir))
+app.use(staticServer(config.staticDir))
 
 // 配置swig参数
 app.context.render = co.wrap(render({

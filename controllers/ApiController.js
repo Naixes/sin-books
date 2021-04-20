@@ -1,5 +1,5 @@
 // 提供api
-const Controller = require("./Controller");
+import Controller from "./Controller"
 
 class ApiController extends Controller {
     constructor() {
@@ -23,4 +23,4 @@ class ApiController extends Controller {
     }
 }
 
-module.exports = ApiController
+export default ApiController

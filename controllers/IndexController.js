@@ -1,4 +1,4 @@
-const Controller = require("./Controller");
+import Controller from "./Controller"
 
 class IndexController extends Controller {
     constructor() {
@@ -10,4 +10,4 @@ class IndexController extends Controller {
     }
 }
 
-module.exports = IndexController
+export default IndexController
