@@ -17,3 +17,10 @@ koa
 真假路由：koa2-connect-history-api-fallback
 
 容错处理
+
+区分不支持es6的浏览器，用babel编译systmejs加载
+
+> 模版冲突：swig配置项varControls: ['[[', ']]']
+>
+> npm i @babel/plugin-transform-modules-systemjs @babel/cli @babel/core -D
+

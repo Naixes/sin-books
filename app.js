@@ -6,6 +6,7 @@ const {historyApiFallback} = require('koa2-connect-history-api-fallback')
 
 const config = require('./config')
 const initController = require('./controllers')
+const ErrorHandler = require('./midlleware/ErrorHandle')
 
 const app = new Koa()
 
@@ -16,6 +17,8 @@ app.use(historyApiFallback({
     whiteList: ['/api']
 }))
 
+ErrorHandler.error(app)
+
 // 静态资源
 app.use(static(config.staticDir))
 
@@ -25,6 +28,8 @@ app.context.render = co.wrap(render({
     root: config.viewDir,
     // 线上开启
     cache: config.cache, // disable, set to false
+    // 解决和vue模版冲突
+    varControls: ['[[', ']]']
 }))
 
 initController(app)

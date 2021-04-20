@@ -4,9 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Vue</title>
 </head>
 <body>
-    <h2>naixes</h2>
+    <div id="app">
+        <h2>naixes</h2>
+        <h2>vue: {{message}}</h2>
+        <h2>koa: [[message]]</h2>
+    </div>
+    <!-- vuejs -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- systemjs -->
+    <script src="https://cdn.staticfile.org/systemjs/6.8.3/system.js"></script>
+    <!-- module -->
+    <script type="module">
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'vue message'
+            }
+        })
+        import('/js/testData.js').then(res => {
+            console.log('res', res);
+        })
+    </script>
+    <script type="nomodule">
+        console.log('不支持模块化导入');
+        System.import('/js/testData-bundle.js').then(res => {
+            console.log('res', res);
+        })
+    </script>
 </body>
 </html>
