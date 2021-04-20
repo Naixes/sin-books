@@ -33,3 +33,20 @@ model层
 axios封装，容错
 
 封装函数式库
+
+- 阅读源码：lodash，underscore
+- 参考
+
+e2e测试
+
+playWright+chai
+
+rize pupteer
+
+接口测试
+
+mocha+supertest
+
+> 工具：tree-cli，生成文件结构
+>
+> tree -L 2 -o README.md

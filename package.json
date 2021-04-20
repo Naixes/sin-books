@@ -8,7 +8,9 @@
   },
   "scripts": {
     "dev": "NODE_ENV=development nodemon --exec babel-node ./app.js",
-    "build": "babel ./assets/js/testData.js -o ./assets/js/testData-bundle.js"
+    "build": "babel ./assets/js/testData.js -o ./assets/js/testData-bundle.js",
+    "test:e2e": "node tests/e2e.test.js",
+    "test:api": "mocha --file ./tests/api.test.js"
   },
   "repository": {
     "type": "git",
@@ -37,6 +39,9 @@
     "@babel/node": "^7.13.13",
     "@babel/plugin-transform-modules-systemjs": "^7.13.8",
     "@babel/preset-env": "^7.13.15",
-    "nodemon": "^2.0.7"
+    "chai": "^4.3.4",
+    "mocha": "^8.3.2",
+    "nodemon": "^2.0.7",
+    "supertest": "^6.1.3"
   }
 }
