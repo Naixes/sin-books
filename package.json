@@ -7,10 +7,19 @@
     "test": "tests"
   },
   "scripts": {
-    "dev": "NODE_ENV=development nodemon --exec babel-node ./app.js",
-    "build": "babel ./assets/js/testData.js -o ./assets/js/testData-bundle.js",
-    "test:e2e": "node tests/e2e.test.js",
-    "test:api": "mocha --file ./tests/api.test.js"
+    "client:dev": "scripty",
+    "client:prod": "scripty",
+    "server:dev": "scripty",
+    "server:prod": "scripty",
+    "test:e2e": "scripty",
+    "test:api": "scripty",
+    "dev": "NODE_ENV=development nodemon --exec babel-node ./src/server/app.js",
+    "start": "pm2",
+    "test": "",
+    "build": "npm run client:prod & npm run server:prod",
+    "build-systemjs": "babel ./assets/js/testData.js -o ./assets/js/testData-bundle.js",
+    "demo": "echo helleo",
+    "predemo": "predemo"
   },
   "repository": {
     "type": "git",
@@ -42,6 +51,8 @@
     "chai": "^4.3.4",
     "mocha": "^8.3.2",
     "nodemon": "^2.0.7",
+    "playwright": "^1.10.0",
+    "scripty": "^2.0.0",
     "supertest": "^6.1.3"
   }
 }

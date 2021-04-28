@@ -1,3 +1,7 @@
+# BFF
+
+## 版本1
+
 文件结构
 
 koa
@@ -50,3 +54,65 @@ mocha+supertest
 > 工具：tree-cli，生成文件结构
 >
 > tree -L 2 -o README.md
+
+## 版本2
+
+### webComponents
+
+YouTube使用
+
+框架：x-tag，polymerjs，omi
+
+### 前后端分离
+
+库：scripty，使用sh文件管理命令
+
+```json
+// 修改前：
+  "scripts": {
+    "dev": "NODE_ENV=development nodemon --exec babel-node ./app.js",
+    "build": "babel ./assets/js/testData.js -o ./assets/js/testData-bundle.js",
+    "test:e2e": "node tests/e2e.test.js",
+    "test:api": "mocha --file ./tests/api.test.js"
+  },
+// 修改后
+  "scripts": {
+    "client:dev": "scripty",
+    "client:prod": "scripty",
+    "server:dev": "scripty",
+    "server:prod": "scripty",
+    "test:e2e": "scripty",
+    "test:api": "scripty",
+    "dev": "NODE_ENV=development nodemon --exec babel-node ./app.js",
+    "start": "pm2",
+    "test": "",
+    "build": "npm run client:prod & npm run server:prod",
+    "build-systemjs": "babel ./assets/js/testData.js -o ./assets/js/testData-bundle.js"
+  },
+```
+
+集群编译
+
+钩子：
+
+```json
+    "demo": "echo helleo",
+    "predemo": "predemo"
+```
+
+npm-run-all
+
+jscpd：代码重复率检查
+
+.jscpd.json
+
+```json
+{
+  "threshold": 0,
+  "reporters": ["html", "console"]
+}
+// 命令：jscpd './demo/test.js'
+```
+
+
+
