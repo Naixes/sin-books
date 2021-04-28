@@ -114,5 +114,37 @@ jscpd：代码重复率检查
 // 命令：jscpd './demo/test.js'
 ```
 
+文件夹分离
 
+mpa，服务器渲染多页面
 
+webpack，多入口
+
+```js
+// webpack.config.js基本配置
+module.exports = {
+    entry: "",
+    output: "",
+    module: ""
+}
+```
+
+区分打包环境：
+
+库，yargs，处理命令参数
+
+webpack-merge，合并配置文件
+
+glob，多入口文件处理
+
+babel：babel-loader
+
+模版语法不能引入css和js，需要webpack处理
+
+html-webpack-plugin：打包html并注入资源
+
+多页面配置，解决引用多余js文件和js资源注入位置错误，抽离共通的runtime
+
+自定义插件解决js资源注入位置错误
+
+gulp

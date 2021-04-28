@@ -1,0 +1,22 @@
+{% extends '../../layouts/layout.html' %}
+
+{% block title %}list{% endblock %}
+
+{% block header %}
+<!-- injectcss -->
+{% endblock %}
+
+{% block content %}
+<table class="table table-bordered">
+    {% for item in data %}
+    <tr>
+        <td>[[item.author]]</td>
+        <td>[[item.name]]</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+
+{% block script %}
+<!-- injectjs -->
+{% endblock %}

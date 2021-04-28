@@ -8,8 +8,8 @@ class BooksController extends Controller {
     async actionBooksListPage(ctx) {
         const booksModel = new BooksModel()
         const result = await booksModel.getBooksList()
-        // context
-        ctx.body = await ctx.render('books/list', {
+        
+        ctx.body = await ctx.render('books/pages/list', {
             data: result.data
         })
     }
