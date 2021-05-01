@@ -6,7 +6,7 @@ class IndexController extends Controller {
     }
     async actionIndex(ctx) {
         // context
-        ctx.body = await ctx.render('index', {message: 'swig message'})
+        ctx.body = await ctx.render('home/pages/index', {message: 'swig message'})
     }
 }
 

@@ -43,11 +43,6 @@ const basicConfig = {
     mode,
     // 多入口
     entry: entries,
-    output: {
-        path: path.join(__dirname, './dist/assets'),
-        // name是entries中的key
-        filename: 'scripts/[name].bundle.js'
-    },
     // 压缩
     optimization: {
         // 抽离出公共部分
