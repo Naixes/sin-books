@@ -52,6 +52,7 @@ app.context.render = co.wrap(render({
     varControls: ['[[', ']]']
 }))
 
+// 初始化路由
 initController(app)
 
 app.listen(config.port, () => {

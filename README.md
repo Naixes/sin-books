@@ -147,4 +147,18 @@ html-webpack-plugin：打包html并注入资源
 
 自定义插件解决js资源注入位置错误
 
+```js
+const pluginName = 'ConsoleLogOnBuildWebpackPlugin';
+
+class ConsoleLogOnBuildWebpackPlugin {
+  apply(compiler) {
+    compiler.hooks.run.tap(pluginName, (compilation) => {
+      console.log('The webpack build process is starting!!!');
+    });
+  }
+}
+
+module.exports = ConsoleLogOnBuildWebpackPlugin;
+```
+
 gulp

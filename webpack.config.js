@@ -5,6 +5,8 @@ const glob = require('glob')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
+// 页面模板处理
+const HtmlAfterPlugin =  require('./build/HtmlAfterPlugin')
 // console.log(argv);
 
 const mode = argv.mode || 'development'
@@ -29,7 +31,9 @@ files.forEach(path => {
                 // 模版路径
                 template: `./src/web/views/${pagename}/pages/${template}.html`,
                 // 引入的模块
-                chunks: [entryKey]
+                chunks: [entryKey],
+                // 取消注入功能，用自定义插件HtmlWebpackPlugin替代
+                inject: false
             })
         )
     }
@@ -58,8 +62,15 @@ const basicConfig = {
         ]
     },
     plugins: [
-        ...htmlPlugins
-    ]
+        ...htmlPlugins,
+        //  注意顺序，HtmlAfterPlugin是基于HtmlWebpackPlugin做的拦截
+        new HtmlAfterPlugin()
+    ],
+    resolve: {
+        alias: {
+            "@": path.resolve('./src/web')
+        }
+    }
 }
 
 module.exports = merge(basicConfig, envConfig)

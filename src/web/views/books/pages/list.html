@@ -1,12 +1,18 @@
-{% extends '../../layouts/layout.html' %}
+{% extends '@layouts/layout.html' %}
 
 {% block title %}list{% endblock %}
 
 {% block header %}
+<style>
+    body{
+        background-color: yellow;
+    }
+</style>
 <!-- injectcss -->
 {% endblock %}
 
 {% block content %}
+{% include '@components/nav/nav.html' %}
 <table class="table table-bordered">
     {% for item in data %}
     <tr>

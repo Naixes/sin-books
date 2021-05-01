@@ -8,6 +8,7 @@ class ErrorHandler {
                 }
             } catch(err) {
                 logger.error(err.message)
+                console.log(err.message);
                 ctx.body = '500，正在积极修复'
             }
         })
