@@ -49,7 +49,9 @@ app.context.render = co.wrap(render({
     // 线上开启
     cache: config.cache, // disable, set to false
     // 解决和vue模版冲突
-    varControls: ['[[', ']]']
+    varControls: ['[[', ']]'],
+    // 必须
+    writeBody: false
 }))
 
 // 初始化路由

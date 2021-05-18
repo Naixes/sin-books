@@ -12,15 +12,8 @@
 {% endblock %}
 
 {% block content %}
-{% include '@components/nav/nav.html' %}
-<table class="table table-bordered">
-    {% for item in data %}
-    <tr>
-        <td>[[item.author]]</td>
-        <td>[[item.name]]</td>
-    </tr>
-    {% endfor %}
-</table>
+<!-- 组装组件 -->
+    {% include '@components/list/index.html' %}
 {% endblock %}
 
 {% block script %}

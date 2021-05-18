@@ -1,6 +1,6 @@
 {% extends '@layouts/layout.html' %}
 
-{% block title %}list{% endblock %}
+{% block title %}create{% endblock %}
 
 {% block header %}
 <style>
@@ -12,15 +12,7 @@
 {% endblock %}
 
 {% block content %}
-{% include '@components/nav/nav.html' %}
-<table class="table table-bordered">
-    {% for item in data %}
-    <tr>
-        <td>[[item.author]]</td>
-        <td>[[item.name]]</td>
-    </tr>
-    {% endfor %}
-</table>
+<h1>create page</h1>
 {% endblock %}
 
 {% block script %}

@@ -14,6 +14,7 @@ function initController(app) {
     // 会自动将ctx，next传过去
     router.get('/', indexController.actionIndex)
     router.get('/books/list', booksController.actionBooksListPage)
+    router.get('/books/create', booksController.actionBooksCreatePage)
 
     // api路由
     router.get('/api/getBooksList', apiController.actionBooksList)
