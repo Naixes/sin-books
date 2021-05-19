@@ -21,17 +21,36 @@ class BooksController extends Controller {
 
         // 从站内请求，防止资源重新加载
         if(ctx.request.header["x-pjax"]) {
-            console.log(111111);
             const $ = cheerio.load(html)
+            // html
             $(".pjaxcontent").each(function () {
-                console.log($(this).html());
                 ctx.res.write($(this).html())
+            })
+            // js
+            $(".lazyload-js").each(function () {
+                ctx.res.write(`<script src=${$(this).attr('src')}></script>`)
             })
             ctx.res.end()
         }else {
             // 刷新
             // 数据量太大，bigpipe
-            ctx.body = html
+            // html已经render过一次不能直接创建流
+            // const filename = resolve(join(__dirname, 'index.html'))
+            // const stream = fs.createReadStream(filename)
+
+            function createSsrStreamPromise() {
+                return new Promise((resolve, reject) => {
+                    const htmlStream = new Readable()
+                    htmlStream.push(html)
+                    htmlStream.push(null)
+
+                    htmlStream.on('error', err => {
+                        reject(err)
+                    }).pipe(ctx.res)
+                })
+            }
+            await createSsrStreamPromise()
+            // ctx.body = html
         }
     }
     async actionBooksCreatePage(ctx) {

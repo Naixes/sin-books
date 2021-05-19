@@ -359,3 +359,12 @@ if(process.env.NODE_ENV === 'production') {
 gulp.task('default', build)
 ```
 
+## 版本3
+
+### mpa+spa真路由同构
+
+jquery.pjax，代理请求
+
+cheerio，在node中像jquery一样操作dom
+
+awilix

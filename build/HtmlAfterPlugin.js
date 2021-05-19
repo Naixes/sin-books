@@ -6,7 +6,11 @@ const pluginName = 'HtmlAfterPlugin';
 const assetHelp = (data) => {
   let js = []
   for(let item of data.js) {
-    js.push(`<script src=${item}></script>`)
+    // 白名单 runtime
+    // const whiteList = []
+    // 激活的js，从缓存中获取localStorage，前端执行
+    // function activeJs(item) {}
+    js.push(`<script class="lazyload-js" src=${item}></script>`)
   }
   return {js}
 }
