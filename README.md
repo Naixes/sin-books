@@ -363,8 +363,13 @@ gulp.task('default', build)
 
 ### mpa+spa真路由同构
 
-jquery.pjax，代理请求
+jquery.pjax，拦截页面上的a，会加一些请求头等参数，可以根据这个请求头进行拦截判断是站内切换还是刷新，如果返回空会重新原请求
+
+注意：配置render，writeBody: false
 
 cheerio，在node中像jquery一样操作dom
 
+js加载：无论之前有没有加载过js，切换到这个页面，js都可能会缺失，可以在webpack插件中给指定的js加上标识，通过自定义插件给业务js添加的lazyload-js标识找到需要的js进行bigpipe输出
+
 awilix
+

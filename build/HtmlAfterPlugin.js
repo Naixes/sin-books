@@ -6,11 +6,14 @@ const pluginName = 'HtmlAfterPlugin';
 const assetHelp = (data) => {
   let js = []
   for(let item of data.js) {
-    // 白名单 runtime
+    // 给业务js添加标识lazyload-js，白名单 runtime
     // const whiteList = []
-    // 激活的js，从缓存中获取localStorage，前端执行
-    // function activeJs(item) {}
     js.push(`<script class="lazyload-js" src=${item}></script>`)
+    // 继续优化的话可以做js缓存
+    // 写一个actitvejs，从缓存中获取localStorage，前端执行
+    // function activeJs(item) {}
+    // 已经缓存了js的情况下直接执行就可以了
+    // activeJs(item)
   }
   return {js}
 }

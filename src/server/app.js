@@ -2,7 +2,7 @@ import Koa from 'koa'
 import render from 'koa-swig'
 import co from 'co'
 import staticServer from 'koa-static'
-import {historyApiFallback} from 'koa2-connect-history-api-fallback'
+// import {historyApiFallback} from 'koa2-connect-history-api-fallback'
 import log4js from "log4js"
 
 import config from './config'
@@ -32,10 +32,10 @@ logger.debug("Some debug messages");
 
 // 真假路由问题
 // 若匹配不到路由重定向到index
-app.use(historyApiFallback({
-    index: '/',
-    whiteList: ['/api', '/books']
-}))
+// app.use(historyApiFallback({
+//     index: '/',
+//     whiteList: ['/api', '/books']
+// }))
 
 ErrorHandler.error(app, logger)
 
@@ -50,7 +50,7 @@ app.context.render = co.wrap(render({
     cache: config.cache, // disable, set to false
     // 解决和vue模版冲突
     varControls: ['[[', ']]'],
-    // 必须
+    // 同构必须
     writeBody: false
 }))
 

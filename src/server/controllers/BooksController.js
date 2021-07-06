@@ -18,15 +18,18 @@ class BooksController extends Controller {
         // 纠正请求头，否则会报404
         ctx.status = 200
         ctx.type = 'html'
-
+ 
         // 从站内请求，防止资源重新加载
         if(ctx.request.header["x-pjax"]) {
             const $ = cheerio.load(html)
             // html
+            // 找到需要局部刷新的部分进行bigpipe输出
             $(".pjaxcontent").each(function () {
                 ctx.res.write($(this).html())
             })
             // js
+            // 无论之前有没有加载过js，切换到这个页面，js都可能会缺失
+            // 通过自定义插件给业务js添加的lazyload-js标识找到需要的js进行bigpipe输出
             $(".lazyload-js").each(function () {
                 ctx.res.write(`<script src=${$(this).attr('src')}></script>`)
             })
@@ -58,4 +61,4 @@ class BooksController extends Controller {
     }
 }
 
-export default BooksController
+export default BooksController   
